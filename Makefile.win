@@ -1,0 +1,22 @@
+CC = gcc
+
+LIBS = -lalleg
+
+PROGNAME = mflags
+
+CP = copy
+MD = mkdir
+
+FLAGS= -Wall -mwindows
+
+REMOVE = del
+
+$(PROGNAME).exe : agup-0.11\agup.a $(PROGNAME).c
+	$(CC) $(FLAGS) $(PROGNAME).c -o $(PROGNAME).exe agup-0.11\agup.a $(LIBS)
+
+agup-0.11\agup.a:
+	cd agup-0.11 | make
+
+clean :
+	cd agup-0.11 | make clean
+	$(REMOVE) $(PROGNAME).exe
